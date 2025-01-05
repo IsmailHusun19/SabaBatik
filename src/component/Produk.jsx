@@ -8,10 +8,9 @@ const Produk = ({ kodeKategori, kategori }) => {
   
   const barang = getBarangByKategori(batik, kodeKategori);
   const handleOnclick = (data) => {
-    window.scrollTo(0, 0);
     navigate(`/DetailProduk/${data.kode_barang}`);
+    window.scrollTo(0, 0);
   };
-  console.log(barang)
 
   if (error) {
     return <p>Error fetching data: {error.message}</p>;

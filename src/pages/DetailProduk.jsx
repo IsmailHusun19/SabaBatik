@@ -32,6 +32,19 @@ const DetailProduk = () => {
     Keranjang: [],
     Pesanan: [],
   });
+  const [quantity, setQuantity] = useState(1);
+  
+
+  useEffect(() => {
+    if (id) {
+      // Reset semua pilihan saat id berubah
+      setWarna(null);
+      setPilihWarna(0);
+      setKain(null);
+      setSize(null);
+      setQuantity(1); // Reset quantity ke 1
+    }
+  }, [id]);
 
   useEffect(() => {
     if (batik && id) {
@@ -86,8 +99,7 @@ const DetailProduk = () => {
       setSize(index);
     }
   };
-
-  const [quantity, setQuantity] = useState(1);
+  
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -135,7 +147,6 @@ const DetailProduk = () => {
       console.log("Data keranjang lengkap, melanjutkan...");
     }
   };
-
   return (
     <div className="container">
       <div className="container-satu">
@@ -238,52 +249,62 @@ const DetailProduk = () => {
                       Dominan Merah Muda
                     </div>
                     <div
-                      className={`p-3 border border-zinc-600 cursor-pointer ${
+                      className={`p-3 border border-zinc-600 ${
+                        !barang.warna[1]
+                        ? "opacity-50 cursor-not-allowed" :
                         warna === "Dominan Biru"
                           ? "bg-zinc-700"
-                          : "hover:bg-zinc-700"
+                          : "hover:bg-zinc-700 cursor-pointer"
                       }`}
-                      onClick={() => handleOnclickWarna("Dominan Biru")}
+                      onClick={!barang.warna[1] ? null : () => handleOnclickWarna("Dominan Biru")}
                     >
                       Dominan Biru
                     </div>
                     <div
-                      className={`p-3 border border-zinc-600 cursor-pointer ${
+                      className={`p-3 border border-zinc-600 ${
+                        !barang.warna[2]
+                        ? "opacity-50 cursor-not-allowed": 
                         warna === "Dominan Hijau"
                           ? "bg-zinc-700"
-                          : "hover:bg-zinc-700"
+                          : "hover:bg-zinc-700 cursor-pointer"
                       }`}
-                      onClick={() => handleOnclickWarna("Dominan Hijau")}
+                      onClick={!barang.warna[1] ? null : () => handleOnclickWarna("Dominan Hijau")}
                     >
                       Dominan Hijau
                     </div>
                     <div
-                      className={`p-3 border border-zinc-600 cursor-pointer ${
+                      className={`p-3 border border-zinc-600 ${
+                        !barang.warna[3]
+                        ? "opacity-50 cursor-not-allowed" :
                         warna === "Dominan Kuning"
                           ? "bg-zinc-700"
-                          : "hover:bg-zinc-700"
+                          : "hover:bg-zinc-700 cursor-pointer"
                       }`}
-                      onClick={() => handleOnclickWarna("Dominan Kuning")}
+                      onClick={!barang.warna[1] ? null : () => handleOnclickWarna("Dominan Kuning")}
                     >
                       Dominan Kuning
                     </div>
                     <div
-                      className={`p-3 border border-zinc-600 cursor-pointer ${
+                      className={`p-3 border border-zinc-600 ${
+                        !barang.warna[4]
+                        ? "opacity-50 cursor-not-allowed": 
                         warna === "Dominan Jingga"
                           ? "bg-zinc-700"
-                          : "hover:bg-zinc-700"
+                          : "hover:bg-zinc-700 cursor-pointer"
                       }`}
-                      onClick={() => handleOnclickWarna("Dominan Jingga")}
+                      onClick={!barang.warna[1] ? null : () => handleOnclickWarna("Dominan Jingga")}
                     >
                       Dominan Jingga
                     </div>
                     <div
-                      className={`p-3 border border-zinc-600 cursor-pointer ${
+                      className={`p-3 border border-zinc-600 ${
+                        !barang.warna[5]
+                        ? "opacity-50 cursor-not-allowed": 
                         warna === "Dominan Salem"
                           ? "bg-zinc-700"
-                          : "hover:bg-zinc-700"
+                          : "hover:bg-zinc-700 cursor-pointer"
                       }`}
-                      onClick={() => handleOnclickWarna("Dominan Salem")}
+                      onClick={!barang.warna[1] ? null : () => handleOnclickWarna("Dominan Salem")}
                     >
                       Dominan Salem
                     </div>
