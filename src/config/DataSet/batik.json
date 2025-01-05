@@ -1,0 +1,133 @@
+[
+    {
+        "kode_kategori": "K001",
+        "nama_kategori": "Batik Motif Semen",
+        "barang": [
+            {
+                "kode_barang": "B001",
+                "nama_barang": "Baju Pria Batik Motif Semen Premium",
+                "warna": [
+                    { "nama_warna": "Dominan Merah Muda", "gambar": "../../public/GambarBatik/Motif semen/Dominan Merah Muda/1.webp" },
+                    { "nama_warna": "Dominan Biru", "gambar": "../../public/GambarBatik/Motif semen/Dominan Biru/1.jpeg" },
+                    { "nama_warna": "Dominan Hijau", "gambar": "../../public/GambarBatik/Motif semen/Dominan Hijau/1.webp" },
+                    { "nama_warna": "Dominan Kuning", "gambar": "../../public/GambarBatik/Motif semen/Dominan Kuning/1.webp" },
+                    { "nama_warna": "Dominan Jingga", "gambar": "../../public/GambarBatik/Motif semen/Dominan Jingga/1.webp" },
+                    { "nama_warna": "Dominan Salem", "gambar": "../../public/GambarBatik/Motif semen/Dominan Salem/1.webp" }
+                ],
+                "harga" : 190.000,
+                "stok": "1293",
+                "rating": 4.5
+            },
+            {
+                "kode_barang": "B002",
+                "nama_barang": "Celana Pria/Wanita Batik Motif Semen Modern",
+                "warna": [
+                    { "nama_warna": "Dominan Merah Muda", "gambar": "../../public/GambarBatik/Motif semen/Dominan Merah Muda/2.webp" },
+                    { "nama_warna": "Dominan Biru", "gambar": "../../../public/GambarBatik/Motif semen/Dominan Biru/2.webp" },
+                    { "nama_warna": "Dominan Hijau", "gambar": "../../public/GambarBatik/Motif semen/Dominan Hijau/2.webp" },
+                    { "nama_warna": "Dominan Kuning", "gambar": "../../public/GambarBatik/Motif semen/Dominan Kuning/2.webp" },
+                    { "nama_warna": "Dominan Jingga", "gambar": "../../public/GambarBatik/Motif semen/Dominan Jingga/2.webp" },
+                    { "nama_warna": "Dominan Salem", "gambar": "../../public/GambarBatik/Motif semen/Dominan Salem/2.webp" }
+                ],
+                "harga" : 170.000,
+                "stok": "1293",
+                "rating": 4.4
+            },
+            {
+                "kode_barang": "B003",
+                "nama_barang": "Baju Wanita Batik Motif Semen Premium",
+                "warna": [
+                    { "nama_warna": "Dominan Merah Muda", "gambar": "../../public/GambarBatik/Motif semen/Dominan Merah Muda/3.webp" },
+                    { "nama_warna": "Dominan Biru", "gambar": "../../public/GambarBatik/Motif semen/Dominan Biru/3.webp" },
+                    { "nama_warna": "Dominan Hijau", "gambar": "../../public/GambarBatik/Motif semen/Dominan Hijau/3.webp" },
+                    { "nama_warna": "Dominan Kuning", "gambar": "../../public/GambarBatik/Motif semen/Dominan Kuning/3.webp" },
+                    { "nama_warna": "Dominan Jingga", "gambar": "../../public/GambarBatik/Motif semen/Dominan Jingga/3.webp" },
+                    { "nama_warna": "Dominan Salem", "gambar": "../../public/GambarBatik/Motif semen/Dominan Salem/3.webp" }
+                ],
+                "harga" : 120.000,
+                "stok": "593",
+                "rating": 4.9
+            }
+        ]
+    },
+    {
+        "kode_kategori": "K002",
+        "nama_kategori": "Batik Motif Terang Bulan",
+        "barang": [
+            {
+                "kode_barang": "B004",
+                "nama_barang": "Baju Pria Batik Motif Terang Bulan Premium",
+                "warna": [
+                    { "nama_warna": "Dominan Merah Muda", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Merah Muda/1.webp" },
+                    { "nama_warna": "Dominan Biru", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Biru/1.jpeg" },
+                    { "nama_warna": "Dominan Hijau", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Hijau/1.webp" },
+                    { "nama_warna": "Dominan Kuning", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Kuning/1.webp" },
+                    { "nama_warna": "Dominan Jingga", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Jingga/1.webp" },
+                    { "nama_warna": "Dominan Salem", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Salem/1.webp" }
+                ],
+                "harga" : 190.000,
+                "stok": "2393",
+                "rating": 4.1
+            }
+        ]
+    },
+    {
+        "kode_kategori": "All",
+        "nama_kategori": "All Motif",
+        "barang": [
+            {
+                "kode_barang": "B005",
+                "nama_barang": "Baju Pria",
+                "warna": [
+                    { "nama_warna": "Dominan Merah Muda", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Merah Muda/1.webp" },
+                    { "nama_warna": "Dominan Biru", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Biru/1.jpeg" },
+                    { "nama_warna": "Dominan Hijau", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Hijau/1.webp" },
+                    { "nama_warna": "Dominan Kuning", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Kuning/1.webp" },
+                    { "nama_warna": "Dominan Jingga", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Jingga/1.webp" },
+                    { "nama_warna": "Dominan Salem", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Salem/1.webp" }
+                ],
+                "harga" : 90000,
+                "stok": "493",
+                "rating": 4.0
+            }
+        ]
+    },
+    {
+        "kode_kategori": "All",
+        "nama_kategori": "All Motif",
+        "barang": [
+            {
+                "kode_barang": "B006",
+                "nama_barang": "Baju Pria Batik Motif Terang Bulan Premium",
+                "warna": [
+                    { "nama_warna": "Dominan Merah Muda", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Merah Muda/1.webp" },
+                    { "nama_warna": "Dominan Biru", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Biru/1.jpeg" },
+                    { "nama_warna": "Dominan Hijau", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Hijau/1.webp" },
+                    { "nama_warna": "Dominan Kuning", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Kuning/1.webp" },
+                    { "nama_warna": "Dominan Jingga", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Jingga/1.webp" },
+                    { "nama_warna": "Dominan Salem", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Salem/1.webp" }
+                ],
+                "harga" : 90000,
+                "stok": "493",
+                "rating": 4.0
+            }
+        ]
+    },
+    {
+        "kode_kategori": "All",
+        "nama_kategori": "All Motif",
+        "barang": [
+            {
+                "kode_barang": "B007",
+                "nama_barang": "Baju Pria Batik Motif Terang Bulan PremiumMM",
+                "warna": [
+                    { "nama_warna": "Dominan Merah Muda", "gambar": "../../public/GambarBatik/Batik Motif Terang Bulan/Dominan Merah Muda/1.webp" }
+                ],
+                "harga" : 90000,
+                "stok": "493",
+                "rating": 4.0
+            }
+        ]
+    }
+
+]
