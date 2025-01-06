@@ -12,8 +12,15 @@ import useFetchBatik from "../utils/useFetchBatik";
 import { getBarangById } from "../services/barangService";
 import Produk from "../component/Produk";
 import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom';
+
 
 const DetailProduk = () => {
+  const navigate = useNavigate();
+  const urutanAkun = JSON.parse(localStorage.getItem("urutanAkun"));
+  const akunKey = "akun" + urutanAkun;
+  let user = JSON.parse(localStorage.getItem(akunKey))
+  console.log(user);
   const { id } = useParams();
   const { batik, error } = useFetchBatik();
   const [barang, setBarang] = useState();
@@ -84,7 +91,6 @@ const DetailProduk = () => {
     }
   }, [warna]);
 
-  console.log(warna);
 
   const handleOnclickKain = (namaKain) => {
     if (namaKain === kain) {
@@ -195,6 +201,11 @@ const DetailProduk = () => {
     }
   };
 
+  const login = async () => {
+    navigate(`/login`);
+    window.scrollTo(0, 0);
+  };
+
   const pesanan = () => {
     const totalHarga = barang.harga * quantity + PilihKain + PilihSize;
     const dataPesanan = {
@@ -209,7 +220,6 @@ const DetailProduk = () => {
       jumlah: quantity
     };
   
-    // Memeriksa apakah ada field yang belum terisi
     if (Object.values(dataPesanan).some(value => value === null || value === undefined)) {
       return Swal.fire({
         icon: "error",
@@ -569,7 +579,7 @@ const DetailProduk = () => {
                   <button
                     className="w-[220px] px-5 py-4 bg-yellow-500 text-zinc-900 text-base font-semibold flex items-center gap-1 rounded-md"
                     type="button"
-                    onClick={() => keranjang()}
+                    onClick={user === null ? () => login() :  () => keranjang()}
                   >
                     Masukan Keranjang{" "}
                     <FontAwesomeIcon
@@ -580,7 +590,7 @@ const DetailProduk = () => {
                   <button
                     className="w-[220px] px-5 py-4 bg-yellow-500 text-zinc-900 text-base font-semibold rounded-md"
                     type="button"
-                    onClick={() => pesanan()}
+                    onClick={user === null ? () => login() :  () => pesanan()}
                   >
                     Beli Sekarang
                   </button>

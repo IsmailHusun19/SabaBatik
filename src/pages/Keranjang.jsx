@@ -1,6 +1,5 @@
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
-import batik from "../assets/batik.webp";
 import iconKeranjang from "../assets/shopping-cart.png";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -45,24 +44,19 @@ const Keranjang = () => {
       akun = { Keranjang: [], Pesanan: [] };
     }
 
-    // Filter produk yang dipilih
     const selectedProducts = keranjang.filter((_, index) =>
       checkedItems.includes(index)
     );
 
-    // Tambahkan produk yang dipilih ke dalam pesanan
     akun.Pesanan = [...akun.Pesanan, ...selectedProducts];
 
-    // Hapus produk yang dipilih dari keranjang
     const updatedKeranjang = keranjang.filter(
       (_, index) => !checkedItems.includes(index)
     );
 
-    // Update data keranjang dan pesanan di localStorage
     akun.Keranjang = updatedKeranjang;
     localStorage.setItem(akunKey, JSON.stringify(akun));
 
-    // Reset checked items dan keranjang
     setKeranjang(updatedKeranjang);
     setCheckedItems([]);
     setSelectAll(false);
