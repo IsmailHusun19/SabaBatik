@@ -20,7 +20,9 @@ const DetailProduk = () => {
   const [warna, setWarna] = useState(null);
   const [PilihWarna, setPilihWarna] = useState(0);
   const [kain, setKain] = useState(null);
+  const [PilihKain, setPilihKain] = useState(0);
   const [size, setSize] = useState(null);
+  const [PilihSize, setPilihSize] = useState(0);
   const [idKategori, setIdKategori] = useState("all");
   const [namaKategori, setNamaIdKategori] = useState("All Produk");
   const [formData, setFormData] = useState({
@@ -37,12 +39,12 @@ const DetailProduk = () => {
 
   useEffect(() => {
     if (id) {
-      // Reset semua pilihan saat id berubah
       setWarna(null);
       setPilihWarna(0);
       setKain(null);
       setSize(null);
-      setQuantity(1); // Reset quantity ke 1
+      setQuantity(1);
+      setPilihKain(0);
     }
   }, [id]);
 
@@ -84,21 +86,55 @@ const DetailProduk = () => {
 
   console.log(warna);
 
-  const handleOnclickKain = (index) => {
-    if (index === kain) {
+  const handleOnclickKain = (namaKain) => {
+    if (namaKain === kain) {
       setKain(null);
     } else {
-      setKain(index);
+      setKain(namaKain);
     }
   };
+  
+  useEffect(() => {
+    const hargaKain = {
+      "Kain Katun": 0,
+      "Kain Mori": 14000,
+      "Kain Sutra": 25500,
+      "Kain Shantung": 33500,
+      "Kain Grey": 47500,
+      "Kain Paris": 62500,
+      "Kain Ceruty": 73500,
+      "Kain Rayon": 89500
+    };
+  
+    if (kain === null) {
+      setPilihKain(0);
+    } else {
+      setPilihKain(hargaKain[kain] || 0);
+    }
+  }, [kain]);
 
-  const handleOnclickSize = (index) => {
-    if (index === size) {
+  const handleOnclickSize = (ukuran) => {
+    if (ukuran === size) {
       setSize(null);
     } else {
-      setSize(index);
+      setSize(ukuran);
     }
   };
+  
+  useEffect(() => {
+    const hargaUkuran = {
+      "M": 0,
+      "L": 14000,
+      "XL": 25500,
+      "XXL": 33500,
+    };
+  
+    if (size === null) {
+      setPilihSize(0);
+    } else {
+      setPilihSize(hargaUkuran[size] || 0);
+    }
+  }, [size]);
   
   const decreaseQuantity = () => {
     if (quantity > 1) {
@@ -110,8 +146,19 @@ const DetailProduk = () => {
   };
 
   const keranjang = () => {
-    const dataKeranjang = [id, barang.nama_barang, barang.harga, warna, kain, size, quantity];
-    if (dataKeranjang.some((item) => item === null || item === undefined)) {
+    const totalHarga = barang.harga * quantity + PilihKain + PilihSize;
+    const dataKeranjang = {
+      idBarang: id, 
+      namaBarang: barang.nama_barang, 
+      hargaBarang: barang.harga,
+      gambarBarang: barang.warna[PilihWarna].gambar,
+      totalHargaBarang: totalHarga,
+      warnaBarang: warna,
+      jenisKain: kain,
+      Ukuran: size,
+      jumlah: quantity
+    };
+    if (Object.values(dataKeranjang).some(value => value === null || value === undefined)) {
       return Swal.fire({
         icon: "error",
         showConfirmButton: false,
@@ -121,32 +168,92 @@ const DetailProduk = () => {
       });
     } else {
       const urutanAkun = JSON.parse(localStorage.getItem("urutanAkun"));
-      const akunKey = "akun" + urutanAkun; // Key untuk menyimpan akun di localStorage
+      const akunKey = "akun" + urutanAkun;
       let akun = JSON.parse(localStorage.getItem(akunKey)) || {
         Keranjang: [],
         Pesanan: [],
       };
+      
       if (typeof akun !== "object") {
         akun = { Keranjang: [], Pesanan: [] };
       }
-
-      const keranjang = dataKeranjang;
-
-      // Menambahkan data keranjang ke dalam array Keranjang
-      akun.Keranjang.push(keranjang);
-
-      // Simpan kembali objek akun yang telah dimodifikasi ke localStorage
+      
+      akun.Keranjang.push(dataKeranjang);
       localStorage.setItem(akunKey, JSON.stringify(akun));
-
-      // Update state formData dengan data keranjang
+      
       setFormData({
         ...formData,
         Keranjang: akun.Keranjang,
       });
-
-      console.log("Data keranjang lengkap, melanjutkan...");
+      setWarna(null);
+      setPilihWarna(0);
+      setKain(null);
+      setSize(null);
+      setQuantity(1);
+      setPilihKain(0);
+    
     }
   };
+
+  const pesanan = () => {
+    const totalHarga = barang.harga * quantity + PilihKain + PilihSize;
+    const dataPesanan = {
+      idBarang: id,
+      namaBarang: barang.nama_barang,
+      hargaBarang: barang.harga,
+      gambarBarang: barang.warna[PilihWarna].gambar,
+      totalHargaBarang: totalHarga,
+      warnaBarang: warna,
+      jenisKain: kain,
+      Ukuran: size,
+      jumlah: quantity
+    };
+  
+    // Memeriksa apakah ada field yang belum terisi
+    if (Object.values(dataPesanan).some(value => value === null || value === undefined)) {
+      return Swal.fire({
+        icon: "error",
+        showConfirmButton: false,
+        text: "Harap lengkapi pesanan!",
+        timer: 1500,
+        timerProgressBar: true,
+      });
+    } else {
+      const urutanAkun = JSON.parse(localStorage.getItem("urutanAkun"));
+      const akunKey = "akun" + urutanAkun;
+      let akun = JSON.parse(localStorage.getItem(akunKey)) || {
+        Keranjang: [],
+        Pesanan: [],
+      };
+  
+      if (typeof akun !== "object") {
+        akun = { Keranjang: [], Pesanan: [] };
+      }
+  
+      akun.Pesanan.push(dataPesanan);
+      localStorage.setItem(akunKey, JSON.stringify(akun));
+  
+      setFormData({
+        ...formData,
+        Pesanan: akun.Pesanan,
+      });
+
+      setWarna(null);
+      setPilihWarna(0);
+      setKain(null);
+      setSize(null);
+      setQuantity(1);
+      setPilihKain(0);
+      return Swal.fire({
+        icon: "success",
+        showConfirmButton: false,
+        text: "Berhasil cekout!",
+        timer: 1500,
+        timerProgressBar: true,
+      });
+    }
+  };
+  
   return (
     <div className="container">
       <div className="container-satu">
@@ -455,7 +562,7 @@ const DetailProduk = () => {
                     </div>
                   </div>
                   <h1 className="ml-3 text-slate-100 text-opacity-65 text-sm">
-                    Tersisa 1800 Buah
+                    Tersisa {barang.stok} Buah
                   </h1>
                 </div>
                 <div className="ml-[200px] flex gap-5 mt-5">
@@ -473,6 +580,7 @@ const DetailProduk = () => {
                   <button
                     className="w-[220px] px-5 py-4 bg-yellow-500 text-zinc-900 text-base font-semibold rounded-md"
                     type="button"
+                    onClick={() => pesanan()}
                   >
                     Beli Sekarang
                   </button>

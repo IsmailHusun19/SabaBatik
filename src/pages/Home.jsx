@@ -1,6 +1,6 @@
 import Navbar from "../component/Navbar";
 import model from "../assets/Gamis Pink.jpg";
-import bg from "../assets/bg.jpg";
+import bg from "../assets/bg.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
@@ -9,11 +9,8 @@ import {
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
-import iconBaju from "../assets/Iconbaju.webp";
-import batik from "../assets/batik.webp";
 import Footer from "../component/Footer";
 import Kategori from "../component/Kategori";
-import Produk from "../component/Produk";
 
 const Home = () => {
   return (

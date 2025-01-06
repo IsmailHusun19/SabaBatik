@@ -1,4 +1,3 @@
-import iconBaju from "../assets/Iconbaju.webp";
 import { useEffect } from "react";
 import { useState } from "react";
 import Produk from "./Produk";
@@ -26,6 +25,8 @@ const Kategori = () => {
     }
   };
 
+  
+
   return (
     <>
       <div className="bg-zinc-900 w-[95%] m-auto p-5 rounded-lg ">
@@ -41,8 +42,8 @@ const Kategori = () => {
               key={data.kode}
               onClick={() => handleKategoriClick(data)}
             >
-              <img className="w-24" src={iconBaju} alt="Batik Motif" />
-              <p className="text-slate-200 text-sm font-medium h-[40px]">
+              <img className="w-24 h-24 bg-yellow-500 rounded-full" src={data.gambar} alt="Batik Motif" />
+              <p className="text-slate-200 text-sm font-medium h-[40px] mt-1">
                 {data.nama_kategori}
               </p>
             </div>

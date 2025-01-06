@@ -1,16 +1,34 @@
-import { useNavigate } from 'react-router-dom';
-import useFetchBatik from "../utils/useFetchBatik"; // Sesuaikan path
-import { getBarangByKategori } from "../services/barangService"; // Import layanan
+import { useNavigate } from "react-router-dom";
+import useFetchBatik from "../utils/useFetchBatik";
+import { getBarangByKategori } from "../services/barangService";
+import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Produk = ({ kodeKategori, kategori }) => {
   const navigate = useNavigate();
   const { batik, error } = useFetchBatik();
-  
   const barang = getBarangByKategori(batik, kodeKategori);
   const handleOnclick = (data) => {
     navigate(`/DetailProduk/${data.kode_barang}`);
     window.scrollTo(0, 0);
   };
+  const url = window.location.hash;
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === "#produk") {
+        const produkElement = document.getElementById("produk");
+        if (produkElement) {
+          produkElement.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    handleHashChange();
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, [url]);
 
   if (error) {
     return <p>Error fetching data: {error.message}</p>;
@@ -18,7 +36,10 @@ const Produk = ({ kodeKategori, kategori }) => {
 
   return (
     <>
-      <h1 className="text-slate-100 font-medium font-lg opacity-80 text-xl mb-3">
+      <h1
+        id="produk"
+        className="text-slate-100 font-medium font-lg opacity-80 text-xl mb-3"
+      >
         {kategori.toUpperCase()}
       </h1>
       <div className="gap-1 items-center flex-wrap grid grid-cols-5">
@@ -33,17 +54,25 @@ const Produk = ({ kodeKategori, kategori }) => {
               src={barang.warna[0].gambar}
               alt={barang.nama_barang}
             />
-            <p className="text-slate-200 text-sm font-medium mt-4 w-full text-left px-2">
+            <p className="text-slate-200 text-sm font-medium mt-4 w-full text-left px-2 h-[40px]">
               {barang.nama_barang}
             </p>
             <div className="w-full text-left p-2">
               <h1 className="text-lg text-yellow-500 font-medium">
-                <span className="text-sm">Rp.</span> {barang.harga.toLocaleString("id-ID")}
+                <span className="text-sm">Rp.</span>{" "}
+                {barang.harga.toLocaleString("id-ID")}
               </h1>
             </div>
             <div className="flex justify-between w-full pt-1 pb-2 px-2">
               <div className="flex gap-1 items-center">
-                <p className="text-slate-200 mt-1 text-sm">{barang.rating}</p>
+                <p className="text-slate-200 mt-1 text-sm">
+                  {" "}
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    className="text-[#FFD43B] text-[15px] mt-[-5px] mr-1"
+                  />
+                  {barang.rating}
+                </p>
               </div>
               <p className="text-slate-200 text-sm">{barang.stok}+ Terjual</p>
             </div>

@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import DetailProduk from './pages/DetailProduk';
 import Keranjang from './pages/Keranjang';
 import Pesanan from './pages/Pesanan';
-import Signup from './pages/Signup';
+import Signup from './pages/SignUp';
 import Login from './pages/Login';
 
 

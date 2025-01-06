@@ -1,45 +1,42 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBars,
-  faX,
   faArrowRightFromBracket,
-  faUser,
+  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const menuNavigasi = [
   { name: "Home", link: "/" },
-  { name: "Produk", link: "/matakuliah" },
-  { name: "Tentang Kami", link: "/services" },
-  { name: "Contact", link: "/editor" },
+  { name: "Produk", link: "/#produk" },
+  { name: "Pesanan", link: "/Pesanan" },
+  { name: "Contact Me", link: "/" },
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const urutanAkun = JSON.parse(localStorage.getItem("urutanAkun"));
+  const akunKey = "akun" + urutanAkun;
+  const akun = JSON.parse(localStorage.getItem(akunKey)) || {
+    Keranjang: [],
+    Pesanan: [],
+  };
+  const jumlahItemDiKeranjang = akun.Keranjang.length;
+  const user = JSON.parse(localStorage.getItem(akunKey));
   const [data, setData] = useState(false);
   useEffect(() => {
     const checkUrutan = async () => {
       const urutan = localStorage.getItem("urutanAkun");
       if (urutan) {
         setData(true);
-        console.log(data);
       } else {
         setData(false);
-        console.log(data);
       }
     };
     checkUrutan();
   }, [data]);
-
-  const handleSetData = (data) => {
-    setUserData(data);
-    if (data) {
-      localStorage.setItem("status", true);
-    } else {
-      localStorage.setItem("status", false);
-    }
-  };
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -47,7 +44,17 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = async () => {};
+  const handleLogout = async () => {
+    localStorage.removeItem("urutanAkun");
+    setData(false);
+    navigate(`/`);
+    window.scrollTo(0, 0);
+  };
+
+  const handleKeranjang = () => {
+    navigate(`/Keranjang`);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="container-navbar text-slate-200">
@@ -71,7 +78,29 @@ const Navbar = () => {
             <div className="relative font-[sans-serif] w-max mx-auto font-semibold text-[14px]">
               {data ? (
                 <div>
-                  <div className="relative font-[sans-serif] w-max mx-auto">
+                  <div className="relative font-[sans-serif] w-max mx-auto flex items-center gap-7">
+                    <div
+                      className="relative h-[40px] cursor-pointer mt-[9px] flex justify-center items-center"
+                      onClick={() => handleKeranjang()}
+                    >
+                      <FontAwesomeIcon
+                        icon={faCartShopping}
+                        className="text-[22px]"
+                      />
+                      <div
+                        className={`h-5 w-5 absolute top-[-3px] right-[-5px] rounded-full ${
+                          jumlahItemDiKeranjang === 0
+                            ? "bg-transparent"
+                            : "bg-yellow-500"
+                        }`}
+                      >
+                        <h2 className="text-sm text-center text-slate-200">
+                          {jumlahItemDiKeranjang === 0
+                            ? ""
+                            : jumlahItemDiKeranjang}
+                        </h2>
+                      </div>
+                    </div>
                     <button
                       type="button"
                       onClick={toggleDropdown}
@@ -83,7 +112,7 @@ const Navbar = () => {
                         alt="Profile"
                       />
                       <h1 className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[10ch] lg:max-w-max">
-                        ismail
+                        {user.name}
                       </h1>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +128,7 @@ const Navbar = () => {
                     </button>
 
                     {isOpen && (
-                      <ul className="absolute block shadow-lg bg-white py-2 z-[1000] min-w-full w-max rounded-lg max-h-96 overflow-auto">
+                      <ul className="absolute right-0 block shadow-lg bg-white py-2 z-[1000] w-[190px] mt-28 rounded-lg max-h-96 overflow-auto">
                         <li
                           onClick={handleLogout}
                           className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer gap-3"
