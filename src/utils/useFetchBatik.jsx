@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import batikData from "../config/DataSet/batik.json"; // sesuaikan path
 
 const useFetchBatik = () => {
-  const [batik, setBatik] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch("../../src/config/DataSet/batik.json")
-      .then((response) => response.json())
-      .then((data) => setBatik(data))
-      .catch((error) => setError(error));
-  }, []);
+  const [batik] = useState(batikData);
+  const [error] = useState(null);
 
   return { batik, error };
 };

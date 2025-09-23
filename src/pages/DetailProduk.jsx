@@ -20,7 +20,6 @@ const DetailProduk = () => {
   const urutanAkun = JSON.parse(localStorage.getItem("urutanAkun"));
   const akunKey = "akun" + urutanAkun;
   let user = JSON.parse(localStorage.getItem(akunKey))
-  console.log(user);
   const { id } = useParams();
   const { batik, error } = useFetchBatik();
   const [barang, setBarang] = useState();
