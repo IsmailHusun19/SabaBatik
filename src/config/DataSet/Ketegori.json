@@ -12,26 +12,26 @@
     {
         "kode": "K003",
         "nama_kategori": "Batik Motif Liong",
-        "gambar": "/src/assets/Liong.png"
+        "gambar": "/assets/Liong.png"
     },
     {
         "kode": "K004",
         "nama_kategori": "Batik Motif Encim",
-        "gambar": "/src/assets/Encim.png"
+        "gambar": "/assets/Encim.png"
     },
     {
         "kode": "K005",
         "nama_kategori": "Batik Motif Burung Phoenix",
-        "gambar": "/src/assets/BurungPhoenix.png"
+        "gambar": "/assets/BurungPhoenix.png"
     },
     {
         "kode": "K006",
         "nama_kategori": "Batik Motif Jawa Hokokai",
-        "gambar": "/src/assets/JawaHokokai.png"
+        "gambar": "/assets/JawaHokokai.png"
     },
     {
         "kode": "K007",
         "nama_kategori": "Batik Motif Tujuh Rupa",
-        "gambar": "/src/assets/TujuhRupa.webp"
+        "gambar": "/assets/TujuhRupa.webp"
     }
 ]
