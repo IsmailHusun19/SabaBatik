@@ -2,36 +2,36 @@
     {
         "kode": "K001",
         "nama_kategori": "Batik Motif Semen",
-        "gambar": "/assets/Semen.png"
+        "gambar": "/Semen.png"
     },
     {
         "kode": "K002",
         "nama_kategori": "Batik Motif Terang Bulan",
-        "gambar": "/assets/TerangBulan.png"
+        "gambar": "/TerangBulan.png"
     },
     {
         "kode": "K003",
         "nama_kategori": "Batik Motif Liong",
-        "gambar": "/assets/Liong.png"
+        "gambar": "/Liong.png"
     },
     {
         "kode": "K004",
         "nama_kategori": "Batik Motif Encim",
-        "gambar": "/assets/Encim.png"
+        "gambar": "/Encim.png"
     },
     {
         "kode": "K005",
         "nama_kategori": "Batik Motif Burung Phoenix",
-        "gambar": "/assets/BurungPhoenix.png"
+        "gambar": "/BurungPhoenix.png"
     },
     {
         "kode": "K006",
         "nama_kategori": "Batik Motif Jawa Hokokai",
-        "gambar": "/assets/JawaHokokai.png"
+        "gambar": "/JawaHokokai.png"
     },
     {
         "kode": "K007",
         "nama_kategori": "Batik Motif Tujuh Rupa",
-        "gambar": "/assets/TujuhRupa.webp"
+        "gambar": "/TujuhRupa.webp"
     }
 ]
