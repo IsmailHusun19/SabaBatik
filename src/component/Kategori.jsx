@@ -9,7 +9,7 @@ const Kategori = () => {
 
 
   useEffect(() => {
-    fetch("../../src/config/DataSet/Ketegori.json")
+    fetch("/Ketegori.json")
       .then((response) => response.json())
       .then((data) => setKategori(data))
       .catch((error) => console.error("Error fetching JSON:", error));
